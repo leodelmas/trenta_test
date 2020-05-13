@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BonusController!{% endblock %}
+
+{% block body %}
+<div class="container mt-2">
+    <h1 class="mb-4">Dernières issues du projet Symfony</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td>Nom</td>
+                <td>Statut</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for issue in issues %}
+            <tr>
+                <td><a href="{{ issue.url }}">{{ issue.title }}</a></td>
+                <td>{% if issue.state == 'closed' %}✅{% endif %}{% if issue.state == 'open' %}❌{% endif %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
